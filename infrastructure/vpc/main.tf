@@ -11,7 +11,7 @@ resource "aws_subnet" "public_subnet" {
   availability_zone       = "${element(var.aws_subnets_availability_zones, count.index%length(var.aws_subnets_availability_zones))}"
   map_public_ip_on_launch = true
 
-  tags = "${var.tags}"
+  tags = "${merge(var.tags, map("type","public"))}"
 }
 
 resource "aws_subnet" "private_subnet" {
@@ -21,7 +21,7 @@ resource "aws_subnet" "private_subnet" {
   availability_zone       = "${element(var.aws_subnets_availability_zones, count.index%length(var.aws_subnets_availability_zones))}"
   map_public_ip_on_launch = false
 
-  tags = "${var.tags}"
+  tags = "${merge(var.tags, map("type","private"))}"
 }
 
 resource "aws_internet_gateway" "igw" {

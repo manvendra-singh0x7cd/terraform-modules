@@ -9,3 +9,7 @@ output "vpc_public_subnet_lists" {
 output "vpc_private_subnet_lists" {
   value = "${aws_subnet.private_subnet.*.id}"
 }
+
+output "vpc_azs" {
+  value = "${var.aws_subnets_availability_zones}"
+}
