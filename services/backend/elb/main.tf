@@ -1,5 +1,9 @@
 data "aws_region" "current" {}
 
+data "aws_subnet" "selected" {
+  id = "${var.elb_subnets[0]}"
+}
+
 variable "ELBACCOUNTID" {
   type = "map"
 

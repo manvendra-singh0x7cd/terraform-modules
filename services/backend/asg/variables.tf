@@ -100,3 +100,8 @@ variable "delete_on_termination" {
 variable "placement_tenancy" {
   default = "default"
 }
+
+variable "enable_lb" {
+  description = "Whether to add an elb to security group or not."
+  default     = false
+}

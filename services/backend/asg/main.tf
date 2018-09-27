@@ -15,7 +15,7 @@ resource "aws_autoscaling_group" "asg" {
 }
 
 resource "aws_autoscaling_attachment" "asg-elb" {
-  count                  = "${length(var.loadbalancer_list)}"
+  count                  = "${var.enable_lb}"
   autoscaling_group_name = "${aws_autoscaling_group.asg.name}"
-  elb                    = "${var.loadbalancer_list[count.index]}"
+  elb                    = "${var.loadbalancer_list[0]}"
 }
